@@ -29,19 +29,24 @@
     </header>
 
     <main>
-        <form action="https://httpbin.org/post" method="post">
+        <section class="intro-title">
+            <h1>Homework 4 - Part 1 & 2</h1>
+            <p><em>form-no-js.html (similar to Contact Me page)</em></p>
+        </section>
+
+        <form action="https://httpbin.org/post" method="post" id="contact-form">
             
-            <fieldset>
+            <fieldset class="contact-card">
                 <legend>Contact Form w/ No JS</legend>
 
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Name" required>
     
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="email@example.com"required>
     
                 <label for="comments">Comments:</label>
-                <textarea id="comments" name="comments" required></textarea>
+                <textarea id="comments" name="comments" placeholder="Comments go here" required></textarea>
     
                 <input name="possible_bot" value="true" type="hidden">
     
