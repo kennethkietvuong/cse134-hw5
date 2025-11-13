@@ -222,6 +222,13 @@ main {
             margin-bottom: 0.25rem;
         }
 
+        /* Asterisk for required fields */
+        & > label:has(+ :required)::after {
+            content: " *";
+            color: red;
+            font-weight: var(--font-weight-bold, 700);
+        }
+
         input, textarea {
             font: inherit;
             color: var(--text-color, #222);
@@ -249,6 +256,7 @@ main {
         cursor: pointer;
     }
 
+    /* Disable button if form is invalid */
     &:has(:invalid) button {
         opacity: .45;
         cursor: not-allowed;
@@ -266,20 +274,20 @@ main {
         transform: translateY(0);
     }
 
-    /* Focus border */
-    & :is(input, textarea):focus-visible {
-        border-color: var(--accent-color, #0077cc);
-        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-color, #0077cc) 22%, #ffffff);
-    }
-
     & :is(input, textarea) {
+
+        /* Focus border (when initially clicked/focused on) */
+        &:focus-visible {
+            border-color: var(--accent-color, #0077cc);
+            box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-color, #0077cc) 22%, #ffffff);
+        }
         
         /* Valid input border (green) */
         &:user-valid, &:valid:not(:placeholder-shown) {
             border-color: green;
             box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
         }
-
+        
         /* Invalid input border (red) */
         &:user-invalid, &:invalid:not(:focus):not(:placeholder-shown) {
             border-color: red;
