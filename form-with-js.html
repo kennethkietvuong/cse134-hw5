@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form-with-js.html</title>
+
+    <link rel="stylesheet" href="css/form-with-js.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <span><b>Kenneth's Portfolio</b></span>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="form-no-js.html">form-no-js</a></li>
+                <li><a href="form-with-js.html" class="active"><strong>form-with-js</strong></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro-title">
+            <h1>Homework 4 - Part 3</h1>
+            <p><em>form-with-js.html (similar to Contact Me page)</em></p>
+        </section>
+
+        <form action="https://httpbin.org/post" method="post" id="contact-form">
+            
+            <fieldset class="contact-card">
+                <legend>Contact Form w/ JS</legend>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]+(?: [A-Za-z]+)?" autocomplete="name" required>
+    
+                <!-- pattern="[^@\s]+@[^@\s]+\.[^@\s]+" -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email@example.com" autocomplete="email" required>
+    
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" placeholder="Comments go here" maxlength="200" required></textarea>
+    
+                <input name="possible_bot" value="true" type="hidden">
+    
+                <button type="submit">Submit</button>
+            </fieldset>
+
+            <output id="form-errors"></output>
+            <output id="form-info"></output>
+        </form>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://github.com/kennethkietvuong">
+                        <img src="assets/icons/github-mark.svg" alt="GitHub icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/kenneth-vuong-866989253/">
+                        <img src="assets/icons/LI-In-Bug.png" alt="LinkedIn icon">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p>&copy; <span>2025</span> - <strong>Kenneth Vuong</strong></p>
+    </footer>
+</body>
+</html>
