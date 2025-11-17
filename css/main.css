@@ -244,6 +244,7 @@ profile-card {
 @scope (#quick-links) {
     grid-area: quick;
     margin-top: 0.5rem;
+    margin-bottom: clamp(32px, 4vh, 64px);
     padding: 0.75rem 1rem;
     background: color-mix(in oklab, var(--body-background-color) 85%, #ffffff);
     border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
