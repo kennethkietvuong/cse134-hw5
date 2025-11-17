@@ -1,19 +1,5 @@
-:root {
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-
-    --accent-color: #0077cc;
-    --accent-hover: #005fa3;
-    --text-color: #222;
-
-    --button-color: #333;
-
-    --font-size-adjust-body: 0.52;
-    --font-size-adjust-heading: 0.54;
-
-    --header-footer-color: #f8f8f8;
-    --body-background-color: #f0f0f0;
-}
+@import url("global.css");
+@import url("theme-widget.css");
 
 /* Simple reset */
 body, h1, h2, h3, ul {
@@ -144,7 +130,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: var(--font-weight-normal, 400);
@@ -156,7 +142,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-weight: var(--font-weight-bold, 700);
     font-style: normal;
@@ -207,8 +193,9 @@ main {
     animation: fadeInUp 0.5s ease-out both 0.15s;
 
     project-card {
-        background: #f6f7f9;
-        border: 1px solid #e5e9ef;
+        background: color-mix(in oklab, var(--body-background-color) 85%, #ffffff);
+        border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
+
         border-radius: 12px;
         box-shadow: 0 1px 0 rgba(0,0,0,0.04);
         height: 100%;
@@ -267,8 +254,8 @@ main {
                     font-size: 0.80rem;
                     padding: 0.25rem 0.5rem;
                     border-radius: 999px;
-                    background: #fff;
-                    border: 1px solid #e5e9ef;
+                    background: color-mix(in oklab, var(--body-background-color) 85%, #ffffff);
+                    border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
                     white-space: nowrap;
                 }
             }

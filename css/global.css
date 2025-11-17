@@ -1,29 +1,36 @@
 :root {
     --font-weight-normal: 400;
     --font-weight-bold: 700;
-
+    --font-size-adjust-body: 0.52;
+    --font-size-adjust-heading: 0.54;
+    
     /* Default light mode theme */
+    --font-theme: "Montserrat", sans-serif;
     --accent-color: #0077cc;
     --accent-hover: #005fa3;
     --text-color: #222;
     --button-color: #333;
     --header-footer-color: #f8f8f8;
     --body-background-color: #f0f0f0;
+    --settings-cog-color: #999;
+    --settings-widget-color: lightgray;
 
-    --font-theme: "Montserrat", sans-serif;
-
-    --font-size-adjust-body: 0.52;
-    --font-size-adjust-heading: 0.54;
+    /* experience.html */
+    --center-line-color: gray;
 
     /* Dark mode theme */
     &[data-theme="dark"] {
+        --font-theme: "Montserrat", sans-serif; 
         --accent-color: #4da3ff;
         --accent-hover: #8bc2ff;
         --text-color: #e4e7ef;
         --button-color: #e4e7ef;
         --header-footer-color: #090c16;
         --body-background-color: #050810;
+        --settings-cog-color: #fff;
+        --settings-widget-color: rgb(53, 53, 53);
 
-        --font-theme: "Montserrat", sans-serif;
+        /* experience.html */
+        --center-line-color: white;
     }
 }

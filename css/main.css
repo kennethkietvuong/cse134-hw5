@@ -203,7 +203,7 @@ profile-card {
         display: block;
         margin-top: 0.5rem;
         font-size: 0.9rem;
-        color: #555;
+        color: var(--text-color);
         font-style: italic;
         opacity: 0.8;
         transition: opacity 0.3s ease, transform 0.3s ease;
@@ -242,37 +242,42 @@ profile-card {
 }
 
 @scope (#quick-links) {
-        grid-area: quick;
-        margin-top: 0.5rem;
-        padding: 0.75rem 1rem;
-        background: color(display-p3 0.9 0.9 0.9);
-        border-radius: 6px;
+    grid-area: quick;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in oklab, var(--body-background-color) 85%, #ffffff);
+    border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
+    border-radius: 6px;
 
-        h2 {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+    h2 {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    ol {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+
+    a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+
+        &:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
         }
 
-        ol {
-            margin: 0;
-            padding-left: 1.5rem;
-        }
-
-        a {
+        &:visited {
             color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease, text-decoration 0.2s ease;
-
-            &:hover {
-                color: var(--accent-hover);
-                text-decoration: underline;
-            }
-
-            &:visited {
-                color: var(--accent-color);
-            }
         }
+    }
+
+    animation: fadeInUp 2s ease-out forwards;
+    animation-delay: 1.4s;
+    opacity: 0;
 }
 
 #intro {
@@ -339,7 +344,7 @@ profile-card {
 
         &:hover {
             background-color: var(--button-color);
-            color: #fff;
+            color: var(--body-background-color);
             transform: translateY(-2px);
         }
 

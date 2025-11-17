@@ -1,19 +1,5 @@
-:root {
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-
-    --accent-color: #0077cc;
-    --accent-hover: #005fa3;
-    --text-color: #222;
-
-    --button-color: #333;
-
-    --font-size-adjust-body: 0.52;
-    --font-size-adjust-heading: 0.54;
-
-    --header-footer-color: #f8f8f8;
-    --body-background-color: #f0f0f0;
-}
+@import url("global.css");
+@import url("theme-widget.css");
 
 /* Simple reset */
 body, h1, h2, h3, ul {
@@ -144,7 +130,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: var(--font-weight-normal, 400);
@@ -156,7 +142,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-weight: var(--font-weight-bold, 700);
     font-style: normal;
@@ -205,36 +191,36 @@ kanban-grid {
     width: min(95vw, 1200px);
     margin: 0 auto;
 
-    background: #ffffffcc;
+    background: color-mix(in oklab, var(--body-background-color) 90%, #ffffff);
     padding: 1.25rem;
-
-    border: 1px solid #e5e9ef;
+    
+    border: 1px solid color-mix(in oklab, var(--text-color) 14%, #e5e9ef);
     border-radius: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     animation: fadeInUp 0.55s ease-out both;
 
     .col {
-        background: #fafbfc;
-        border: 1px solid #e5e9ef;
+        background: color-mix(in oklab, var(--body-background-color) 94%, #ffffff);
+        border: 1px solid color-mix(in oklab, var(--text-color) 16%, #e5e9ef);
         border-radius: 12px;
         padding: 0.75rem 0.75rem 1rem;
         box-shadow: 0 1px 0 rgba(0,0,0,0.04);
         animation: fadeInUp 0.55s ease-out both;
 
         &#done {
-            background: color(display-p3 0.55 0.85 0.55);
+            background: color-mix(in oklab, var(--body-background-color) 40%, lightgreen);
         }
 
         &#reviewing {
-            background: color(display-p3 1 0.65 0.45);
+            background: color-mix(in oklab, var(--body-background-color) 40%, orange);
         }
 
         &#in-progress {
-            background: color(display-p3 1 0.85 0.45);
+            background: color-mix(in oklab, var(--body-background-color) 40%, yellow);
         }
 
         &#todo {
-            background: color(display-p3 0.9 0.9 0.9);
+            background: color-mix(in oklab, var(--body-background-color) 40%, gray);
         }
 
         h2 {
@@ -255,11 +241,11 @@ kanban-grid {
 
             kanban-task {
                 position: relative;
-                background: #f6f7f9;
-                border: 1px solid #e5e9ef;
+                background: color-mix(in oklab, var(--body-background-color) 90%, #ffffff);
+                border: 1px solid color-mix(in oklab, var(--text-color) 18%, #e5e9ef);
                 border-radius: 12px;
                 padding: 0.9rem 1rem;
-                box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+                box-shadow: 0 1px 0 rgba(0,0,0,0.08);
                 display: flex;
                 flex-direction: column;
                 gap: 0.4rem;
@@ -269,7 +255,7 @@ kanban-grid {
                 &:hover {
                     transform: translateY(-3px);
                     border-color: color-mix(in oklab, var(--accent-color, #0077cc) 40%, #e5e9ef);
-                    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+                    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
                 }
 
                 h3 {

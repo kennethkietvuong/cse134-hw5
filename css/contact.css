@@ -1,19 +1,5 @@
-:root {
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-
-    --accent-color: #0077cc;
-    --accent-hover: #005fa3;
-    --text-color: #222;
-
-    --button-color: #333;
-
-    --font-size-adjust-body: 0.52;
-    --font-size-adjust-heading: 0.54;
-
-    --header-footer-color: #f8f8f8;
-    --body-background-color: #f0f0f0;
-}
+@import url("global.css");
+@import url("theme-widget.css");
 
 /* Simple reset */
 body, h1, h2, h3, ul {
@@ -144,7 +130,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: var(--font-weight-normal, 400);
@@ -156,7 +142,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-weight: var(--font-weight-bold, 700);
     font-style: normal;
@@ -203,10 +189,10 @@ main {
 
     .contact-card {
         width: min(720px, 92dvw);
-        background: #f6f7f9;
-        border: 1px solid #e5e9ef;
+        background: color-mix(in oklab, var(--body-background-color) 90%, #ffffff);
+        border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
         border-radius: 12px;
-        box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+        box-shadow: 0 1px 0 rgba(0,0,0,0.06);
         padding: 1.25rem 1.25rem 1.5rem;
         display: grid;
         grid-template-columns: 1fr;
@@ -225,8 +211,8 @@ main {
         input, textarea {
             font: inherit;
             color: var(--text-color, #222);
-            background: #fff;
-            border: 1.5px solid #dfe5eb;
+            background: color-mix(in oklab, var(--body-background-color) 94%, #ffffff);
+            border: 1.5px solid color-mix(in oklab, var(--text-color) 18%, #dfe5eb);
             border-radius: 8px;
             padding: 0.7rem 0.85rem;
             outline: none;
@@ -237,7 +223,7 @@ main {
     button {
         margin-top: 0.5rem;
         justify-self: center;
-        font-family: "Montserrat", sans-serif;
+        font-family: var(--font-theme);
         font-weight: 600;
         letter-spacing: .02em;
         padding: .65em 1.25em;
@@ -256,9 +242,9 @@ main {
         user-select: none;
     }
 
-    &:has(:valid:not(:placeholder-shown)) button:hover {
-        background: var(--button-color, #333);
-        color: #fff;
+    &:has(:valid:not(:placeholder-shown)) button:hover {    
+        background-color: var(--button-color);
+        color: var(--body-background-color);
         transform: translateY(-2px);
     }
 
@@ -269,7 +255,7 @@ main {
     /* Focus border */
     & :is(input, textarea):focus-visible {
         border-color: var(--accent-color, #0077cc);
-        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-color, #0077cc) 22%, #ffffff);
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-color, #0077cc) 40%, #ffffff);
     }
 
     & :is(input, textarea) {

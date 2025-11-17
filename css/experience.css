@@ -1,20 +1,5 @@
-:root {
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-
-    --accent-color: #0077cc;
-    --accent-hover: #005fa3;
-    --text-color: #222;
-
-    --button-color: #333;
-
-    --font-size-adjust-body: 0.52;
-    --font-size-adjust-heading: 0.54;
-
-    --header-footer-color: #f8f8f8;
-    --body-background-color: #f0f0f0;
-    --center-line-color: gray;
-}
+@import url("global.css");
+@import url("theme-widget.css");
 
 /* Simple reset */
 body, h1, h2, h3, ul {
@@ -143,7 +128,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-style: normal;
     font-weight: var(--font-weight-normal, 400);
@@ -155,7 +140,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-theme);
     font-optical-sizing: auto;
     font-weight: var(--font-weight-bold, 700);
     font-style: normal;
@@ -241,8 +226,8 @@ main {
 
             /* Academic/Employment card */
             & > article {
-                background: #f6f7f9;
-                border: 1px solid #e5e9ef;
+                background: color-mix(in oklab, var(--body-background-color) 85%, #ffffff);
+                border: 1px solid color-mix(in oklab, var(--text-color) 12%, #e5e9ef);
                 border-radius: 10px;
                 padding: 1rem 1.25rem;
                 box-shadow: 0 1px 0 rgba(0,0,0,0.04);
@@ -300,12 +285,11 @@ main {
                 time {
                     position: absolute;
                     top: 50%;
-                    /* transform: translateX(-50%); */
                     transform: translateY(-50%);
                     line-height: 1;
                     font-weight: 600;
-                    font-size: clamp(.85rem, 1.1vw, 1rem);
-                    color: #667788;
+                    font-size: clamp(0.85rem, 1.1vw, 1rem);
+                    color: color-mix(in oklab, var(--text-color) 75%, var(--body-background-color));
 
                     white-space: nowrap;
                     pointer-events: none;
@@ -342,7 +326,7 @@ main {
                 top: 50%;
                 transform: translateY(-50%);
                 height: 0;
-                border-top: 2px dotted #b8c2cc;
+                border-top: 2px dotted color-mix(in oklab, var(--center-line-color) 70%, var(--body-background-color));
                 width: var(--rail-gap);
 
                 animation: drawRail .6s ease-out forwards;
@@ -367,7 +351,7 @@ main {
         }
 
         polygon {
-            fill: #fff;
+            fill: color-mix(in oklab, var(--body-background-color) 10%, #ffffff);
             stroke: var(--accent-color, #0077cc);
             stroke-width: 8;
         }

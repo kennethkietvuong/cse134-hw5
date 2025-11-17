@@ -49,7 +49,21 @@
         </form>
     </main>
 
-<footer>
+    <footer>
+        <theme-widget>
+            <button type="button" id="theme-toggle-btn">
+                <img src="assets/icons/settings-cogwheel-light.svg" alt="Theme widget cogwheel icon">
+            </button>
+
+            <aside id="theme-window">
+                <p>Theme</p>
+                <button-container>
+                    <button type="button" data-theme="light">Light <em>(Default)</em></button>
+                    <button type="button" data-theme="dark">Dark</button>
+                </button-container>
+            </aside>
+        </theme-widget>
+
         <nav>
             <ul>
                 <li>
@@ -64,7 +78,11 @@
                 </li>
             </ul>
         </nav>
+
+        <noscript>&#9888; <em>Switching themes requires JavaScript.</em> &#9888;</noscript>
+
         <p>&copy; <span>2025</span> - <strong>Kenneth Vuong</strong></p>
     </footer>
+    <script src="scripts/theme-toggle.js"></script>
 </body>
 </html>
