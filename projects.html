@@ -144,7 +144,43 @@
                 <button-container>
                     <button type="button" data-theme="light">Light <em>(Default)</em></button>
                     <button type="button" data-theme="dark">Dark</button>
+                    <button type="button" data-theme="custom">Custom</button>
                 </button-container>
+
+                <custom-theme-panel data-custom-panel>
+                    <p>Customize</p>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-background">Background</label>
+                        <select id="custom-background" data-custom-background>
+                            <option value="light">Soft Light</option>
+                            <option value="sunset">Sunset</option>
+                            <option value="midnight">Midnight Blue</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-accent">Accent</label>
+                        <select id="custom-accent" data-custom-accent>
+                            <option value="blue">Ocean Blue</option>
+                            <option value="teal">Seafoam Teal</option>
+                            <option value="purple">Royal Purple</option>
+                            <option value="orange">Sunset Orange</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-font">Font</label>
+                        <select id="custom-font" data-custom-font>
+                            <option value="rounded">Rounded (Montserrat)</option>
+                            <option value="system">Clean (System UI)</option>
+                            <option value="serif">Classic (Serif)</option>
+                            <option value="mono">Code (Monospace)</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <button type="button" class="custom-theme-apply" data-custom-apply>Apply Custom Theme</button>
+                </custom-theme-panel>
             </aside>
         </theme-widget>
 
@@ -167,6 +203,6 @@
 
         <p>&copy; <span>2025</span> - <strong>Kenneth Vuong</strong></p>
     </footer>
-    <script src="scripts/theme-toggle.js"></script>
+    <script src="scripts/theme-toggle-new.js"></script>
 </body>
 </html>
