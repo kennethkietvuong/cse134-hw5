@@ -8,12 +8,12 @@ const BACKGROUND_PRESETS = {
         text: '#222',
         centerLine: 'gray'
     },
-    dim: {
-        key: 'dim',
-        body: '#0b1220',
-        header: '#020617',
-        text: '#e5e7ef',
-        centerLine: '#3a4152'
+    sunset: {
+        key: 'sunset',
+        body: '#1b1020',
+        header: '#2a1724',
+        text: '#ffeadd',
+        centerLine: '#f97316'
     },
     midnight: {
         key: 'midnight',
@@ -67,7 +67,7 @@ const FONT_PRESETS = {
 };
 
 const DEFAULT_CUSTOM = {
-    backgroundKey: 'dim',
+    backgroundKey: 'sunset',
     accentKey: 'blue',
     fontKey: 'rounded'
 };
