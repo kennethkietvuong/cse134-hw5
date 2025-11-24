@@ -230,7 +230,7 @@ main {
             gap: 0.55rem;
             padding: 0.9rem 1rem 1.05rem;
 
-            h3 {
+            h2 {
                 margin: 0.1rem 0 0;
                 font-size: clamp(1.05rem, 1.2vw, 1.15rem);
                 line-height: 1.25;
@@ -240,6 +240,21 @@ main {
                 margin: 0;
                 color: color-mix(in oklab, var(--text-color, #222) 80%, #999);
                 font-size: 0.97rem;
+            }
+
+            a {
+                font-size: 0.9rem;
+                font-weight: 500;
+                text-decoration: none;
+                color: var(--accent-color);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+
+                &:hover {
+                    color: var(--accent-hover);
+                    text-decoration: underline;
+                }
             }
 
             .project-tags {
