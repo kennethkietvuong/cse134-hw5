@@ -74,7 +74,7 @@ const DEFAULT_CUSTOM = {
 
 function init() {
     const LOCAL_STORAGE_KEY = 'kv-portfolio-theme';
-    const CUSTOM_STORAGE_KEY = 'kv-portfolio-custom-theme'
+    const CUSTOM_STORAGE_KEY = 'kv-portfolio-custom-theme';
 
     let root = document.documentElement;
     let widget = document.querySelector('theme-widget');
