@@ -100,8 +100,10 @@ let localProjects = [
 ];
 
 function init() {
+    // add local data into localStorage if no data exists
     if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localProjects));
+        handleLocalLoad();
     }
 
     let localButton = document.getElementById('load-local');
@@ -110,14 +112,11 @@ function init() {
     localButton.addEventListener('click', handleLocalLoad);
     remoteButton.addEventListener('click', handleRemoteLoad);
 
-    // show local data by default
-    handleLocalLoad();
-
-    function renderCards(cards) {
+    function renderCards(projects) {
         let grid = document.querySelector('.card-grid');
         grid.innerHTML = "";
 
-        cards.forEach(function (project) {
+        projects.forEach(function (project) {
             let li = document.createElement('li');
             let card = document.createElement('project-card');
             card.data = project;
@@ -126,9 +125,12 @@ function init() {
             grid.appendChild(li);
         });
 
+        console.log('project cards rendered');
     }
 
     function handleLocalLoad() {
+        console.log('loading from local...');
+
         let raw = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (!raw) {
             console.error('No local projects found in localStorage data!');
@@ -145,7 +147,24 @@ function init() {
         }
     }
 
-    function handleRemoteLoad() {
+    async function handleRemoteLoad() {
+        console.log('loading from remote...');
 
+        try {
+            const response = await fetch(JSONBIN_URL);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const projects = data.record;
+
+            console.log('remote projects loaded: ', projects);
+            renderCards(projects);
+        }
+        
+        catch (error) {
+            console.error('Error fetching remote data: ', error.message);
+        }
     }
 }
