@@ -209,6 +209,8 @@ main {
                 transform: translateY(0);
             }
         }
+
+        animation: fadeInUp 1s ease-out both .2s;
     }
 }
 
