@@ -103,7 +103,6 @@ function init() {
     // add local data into localStorage if no data exists
     if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localProjects));
-        handleLocalLoad();
     }
 
     let localButton = document.getElementById('load-local');
