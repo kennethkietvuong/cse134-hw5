@@ -310,6 +310,11 @@ main {
     }
 }
 
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.4s ease forwards;
+}
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;

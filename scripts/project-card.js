@@ -115,10 +115,13 @@ function init() {
         let grid = document.querySelector('.card-grid');
         grid.innerHTML = "";
 
-        projects.forEach(function (project) {
+        projects.forEach(function (project, index) {
             let li = document.createElement('li');
             let card = document.createElement('project-card');
             card.data = project;
+
+            card.classList.add('fade-in');
+            card.style.animationDelay = `${index * 100}ms`;
 
             li.appendChild(card);
             grid.appendChild(li);
