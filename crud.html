@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+
+    <link rel="stylesheet" href="css/crud.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <span><b>Kenneth's Portfolio</b></span>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="crud.html" class="active"><strong>CRUD</strong></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="project-crud-container">
+        <section class="intro-title">
+            <h1>Manage Local Projects</h1>
+            <p><em>Try to create, update, and delete projects stored in localStorage.</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <theme-widget>
+            <button type="button" id="theme-toggle-btn">
+                <img src="assets/icons/settings-cogwheel-light.svg" alt="Theme widget cogwheel icon">
+            </button>
+
+            <aside id="theme-window">
+                <p>Theme</p>
+                <button-container>
+                    <button type="button" data-theme="light">Light <em>(Default)</em></button>
+                    <button type="button" data-theme="dark">Dark</button>
+                    <button type="button" data-theme="custom">Custom</button>
+                </button-container>
+
+                <custom-theme-panel data-custom-panel>
+                    <p>Customize</p>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-background">Background</label>
+                        <select id="custom-background" data-custom-background>
+                            <option value="light">Soft Light</option>
+                            <option value="sunset">Sunset</option>
+                            <option value="midnight">Midnight Blue</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-accent">Accent</label>
+                        <select id="custom-accent" data-custom-accent>
+                            <option value="blue">Ocean Blue</option>
+                            <option value="teal">Seafoam Teal</option>
+                            <option value="purple">Royal Purple</option>
+                            <option value="orange">Sunset Orange</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <custom-theme-select class="theme-custom-row">
+                        <label for="custom-font">Font</label>
+                        <select id="custom-font" data-custom-font>
+                            <option value="rounded">Rounded (Montserrat)</option>
+                            <option value="system">Clean (System UI)</option>
+                            <option value="serif">Classic (Serif)</option>
+                            <option value="mono">Code (Monospace)</option>
+                        </select>
+                    </custom-theme-select>
+
+                    <button type="button" class="custom-theme-apply" data-custom-apply>Apply Custom Theme</button>
+                </custom-theme-panel>
+            </aside>
+        </theme-widget>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://github.com/kennethkietvuong">
+                        <img src="assets/icons/github-mark.svg" alt="GitHub icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/kenneth-vuong-866989253/">
+                        <img src="assets/icons/LI-In-Bug.png" alt="LinkedIn icon">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <noscript>&#9888; <em>Switching themes requires JavaScript.</em> &#9888;</noscript>
+
+        <p>&copy; <span>2025</span> - <strong>Kenneth Vuong</strong></p>
+    </footer>
+    <script src="scripts/theme-toggle-new.js"></script>
+</body>
+</html>
