@@ -1,183 +1,112 @@
-@import url("global.css");
-@import url("theme-widget.css");
+@import url(projects.css);
 
-/* Simple reset */
-body, h1, h2, h3, ul {
-    margin: 0;
-    padding: 0;
-}
+#project-crud-container {
+    .crud-controls, .crud-form {
+        max-width: 800px;
+        margin: 1.5rem auto 0;
+    }
 
-header {
-    /* border: 2px solid red; */
-    border-bottom: 2px solid gray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--header-footer-color, white);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    font-size: clamp(1rem, 1.5vw, 1.45rem);
-    z-index:1000;
-    
-    nav {
-        ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .crud-controls {
+        p {
+            margin: 0 0 0.75rem;
+            font-size: 0.95rem;
+            color: color-mix(in oklab, var(--text-color, #222) 75%, #888);
         }
-    
-        a {
-            text-decoration: none;
-            color: var(--text-color, #0077cc);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative; 
+    }
 
-            &::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -3px;
-                width: 0%;
-                height: 2px;
-                background-color: var(--accent-color);
-                transition: width 0.3s ease, opacity 0.3s ease;
-                opacity: 0;
-            }
+    legend {
+        padding: 0 0.25rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+    }
+
+    /* First labels have too much spacing at the top margin */
+    label {
+        display: block;
+        margin-top: 0.75rem;
+        font-weight: 600;
+
+        /* Asterisk for required fields */
+        &:has(+ :required)::after {
+            content: " *";
+            color: red;
+            font-weight: var(--font-weight-bold, 700);
+        }
+    }
+
+    input, textarea, select {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.45rem 0.25rem;
+        border-radius: 4px;
+        border: 1px solid color-mix(in oklab, var(--text-color, #222) 16%, #dde2ea);
+        font-family: var(--font-theme);
+        font-size: 0.95rem;
+        background-color: color-mix(in oklab, var(--body-background-color) 90%, #ffffff);
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    fieldset {
+        border: 1px solid color-mix(in oklab, var(--text-color, #222) 12%, #dde2ea);
+        border-radius: 6px;
+        padding: 0.75rem 1rem 1rem;
+        margin: 0 0 1rem;
+    }
+
+    button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+
+        button {
+            font-family: var(--font-theme);
+            font-weight: 600;
+            padding: 0.5em 1.1em;
+            border-radius: 6px;
+            border: 2px solid var(--button-color);
+            background-color: transparent;
+            color: var(--button-color);
+            cursor: pointer;
+            transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
 
             &:hover {
-                color: var(--accent-hover, darkblue);
-
-                &::after {
-                    width: 100%;
-                    opacity: 1;
-                }
+                background-color: var(--button-color);
+                color: var(--body-background-color);
+                transform: translateY(-2px);
             }
 
-            &.active::after {
-                width: 100%;
-                opacity: 1;
+            &:active {
+                transform: translateY(0);
             }
         }
     }
-}
 
-footer {
-    /* border: 2px solid red; */
-    border-top: 2px solid gray;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--header-footer-color, white);
-    padding: 1rem 2rem;
-    margin-top: 2rem;
-
-    flex: 0 0 auto;
-    position: relative;
-    z-index: 2;
-
-    nav ul {
+    #crud-status {
         display: flex;
-        gap: 1rem;
-        list-style: none;
+        align-self: center;
+        /* margin-top: 0.75rem; */
         margin: 0;
-        padding: 0;
-    }
-
-    a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: transparent;
-        transition: background-color 0.2s ease;
-    }
-
-
-    img {
-        width: 24px;
-        height: 24px;
-        object-fit: contain;
-        display: block;
-        filter: grayscale(30%) brightness(0.9);
-        transition: filter 0.2s ease;
-    }
-
-    a:hover {
-        background-color: #0077cc15;
-    }
-
-    a:hover img {
-        filter: none;
-    }
-
-    p {
         font-size: 0.9rem;
-        color: var(--text-color, #222);
-        margin: 0;
+        color: var(--accent-color);
     }
 }
 
-html, body {
-    height: 100%;
+@media (max-width: 600px) {
+    #project-crud-container .crud-buttons {
+        justify-content: center;
+    }
 }
 
-body {
-    min-height: 100dvh;
+#project-form {
     display: flex;
     flex-direction: column;
-
-    font-family: var(--font-theme);
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: var(--font-weight-normal, 400);
-    font-size-adjust: var(--font-size-adjust-body, 0.5); /* baseline 2024 feature*/
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--body-background-color);
-    margin: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-theme);
-    font-optical-sizing: auto;
-    font-weight: var(--font-weight-bold, 700);
-    font-style: normal;
-    font-size-adjust: var(--font-size-adjust-heading, 0.5); /* baseline 2024 feature*/
-}
-
-header > span {
-    font-weight: 900;
-    letter-spacing: 0.02em;
-}
-
-em, i {
-    font-style: italic;
-}
-
-main {
-    flex: 1 0 auto;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2dvh 4dvw 4rem;
-    min-height: 80dvh;
-
-    .intro-title {
-        h1 {
-            text-align: center;
-            margin: 1.25rem 0 0.25rem;
-            font-weight: var(--font-weight-bold, 700);
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        p {
-            text-align: center;
-            margin: 0 0 1.25rem;
-            color: color-mix(in oklab, var(--text-color, #222) 80%, white);
-            animation: fadeInUp .6s ease-out both .12s;
-        }
-    }
+    gap: 1.25rem;
 }

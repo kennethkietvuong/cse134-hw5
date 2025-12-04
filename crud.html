@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+    <title>CRUD Project Form</title>
 
     <link rel="stylesheet" href="css/crud.css">
 
@@ -28,10 +28,74 @@
         </nav>
     </header>
 
-    <main class="project-crud-container">
+    <main id="project-crud-container">
         <section class="intro-title">
             <h1>Manage Local Projects</h1>
             <p><em>Try to create, update, and delete projects stored in localStorage.</em></p>
+        </section>
+
+        <section class="crud-controls">
+            <h2>Select an Existing Project</h2>
+            <p>Choose a project to edit/delete or leave it on <q>New Project</q> to create a fresh one.</p>
+
+            <label for="project-select">Project</label>
+            <select id="project-select">
+                <option>+ New Project</option>
+            </select>
+        </section>
+
+        <section class="crud-form">
+            <h2>Project Details</h2>
+
+            <form id="project-form">
+                <fieldset>
+                    <legend>Basic Info</legend>
+
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" required>
+
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows=4 required></textarea>
+
+                    <label for="link">Link (URL)</label>
+                    <input id="link" name="link" type="url" placeholder="#">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Image Settings</legend>
+
+                    <label for="imageWebp">WebP Image URL</label>
+                    <input id="imageWebp" name="imageWebp" type="url" placeholder="assets/img/example.webp">
+
+                    <label for="imageWebpType">WebP MIME Type</label>
+                    <input id="imageWebpType" name="imageWebpType" type="text" value="image/webp">
+
+                    <label for="imageFallback">Fallback Image URL</label>
+                    <input id="imageFallback" name="imageFallback" type="url" placeholder="assets/img/example.jpg">
+
+                    <label for="imageFallbackType">Fallback MIME Type</label>
+                    <input id="imageFallbackType" name="imageFallbackType" type="text" value="image/jpg">
+
+                    <label for="alt">Alt Text</label>
+                    <input id="alt" name="alt" type="text" placeholder="Short description of the image">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tags</legend>
+
+                    <label for="tags">Tags (comma-separated)</label>
+                    <input id="tags" name="tags" type="text" placeholder="Python, Data Science, Portfolio">
+                </fieldset>
+                
+                <p id="crud-status"></p>
+
+                <button-container>
+                    <button type="submit" id="save-btn">Save (Create / Update)</button>
+                    <button type="button" id="delete-btn">Delete Selected</button>
+                    <button type="reset" id="clear-btn">Clear Form</button>
+                </button-container>
+
+            </form>
         </section>
     </main>
 
@@ -105,6 +169,7 @@
 
         <p>&copy; <span>2025</span> - <strong>Kenneth Vuong</strong></p>
     </footer>
+    <script src="scripts/crud.js"></script>
     <script src="scripts/theme-toggle-new.js"></script>
 </body>
 </html>
