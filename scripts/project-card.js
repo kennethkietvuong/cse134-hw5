@@ -26,12 +26,32 @@ class ProjectCard extends HTMLElement {
         const project = this._data;
         const tagsHtml = project.tags.map(tag => `<li>${tag}</li>`).join("");
 
+        let pictureHTML;
+
+        if (project.imageId && IMAGE_LIBRARY[project.imageId]) {
+            let imgDefine = IMAGE_LIBRARY[project.imageId];
+
+            pictureHTML = `
+                <picture class="thumbnail">
+                    <source srcset="${imgDefine.src}" type="image/svg">
+                    <source srcset="assets/img/placeholder.svg" type="image/svg">
+                    <img src="${imgDefine.src}" alt="${imgDefine.alt}" width="50" height="50">
+                </picture>
+            `;
+        }
+
+        else {
+            pictureHTML = `
+                <picture class="thumbnail">
+                    <source srcset="${project.imageWebp}" type="${project.imageWebpType}">
+                    <source srcset="${project.imageFallback}" type="${project.imageFallbackType}">
+                    <img src="${project.imageFallback}" alt="${project.alt}" width="50" height="50">
+                </picture>
+            `;
+        }
+
         this.innerHTML = `
-            <picture class="thumbnail">
-                <source srcset="${project.imageWebp}" type="${project.imageWebpType}">
-                <source srcset="${project.imageFallback}" type="${project.imageFallbackType}">
-                <img src="${project.imageFallback}" alt="${project.alt}" width="50" height="50">
-            </picture>
+            ${pictureHTML}
             
             <article>
                 <h2>${project.title}</h2>
@@ -98,6 +118,69 @@ let localProjects = [
         tags: ["Arduino", "C/C++", "Electronics"]
     }
 ];
+
+const IMAGE_LIBRARY = {
+    brainstorming: {
+        src: "assets/img/crud-placeholder-imgs/brainstorming-31.svg",
+        alt: "Vector illustration of a team brainstorming ideas"
+    },
+    camera: {
+        src: "assets/img/crud-placeholder-imgs/camera-4.svg",
+        alt: "Vector illustration of a camera for media work"
+    },
+    chart: {
+        src: "assets/img/crud-placeholder-imgs/chart-3-50.svg",
+        alt: "Vector illustration of an analytics chart"
+    },
+    "creative-process": {
+        src: "assets/img/crud-placeholder-imgs/creative-process-11.svg",
+        alt: "Vector illustration of a creative thinking process"
+    },
+    cybersecurity: {
+        src: "assets/img/crud-placeholder-imgs/cybersecurity-98.svg",
+        alt: "Vector illustration representing cybersecurity"
+    },
+    "data-settings": {
+        src: "assets/img/crud-placeholder-imgs/data-settings-58.svg",
+        alt: "Vector illustration of data and configuration settings"
+    },
+    family: {
+        src: "assets/img/crud-placeholder-imgs/family-1-49.svg",
+        alt: "Vector illustration of a family"
+    },
+    money: {
+        src: "assets/img/crud-placeholder-imgs/money-12.svg",
+        alt: "Vector illustration of money and finance"
+    },
+    "moving-forward": {
+        src: "assets/img/crud-placeholder-imgs/moving-forward-96.svg",
+        alt: "Vector illustration of someone moving forward"
+    },
+    "report-analysis": {
+        src: "assets/img/crud-placeholder-imgs/report-analysis-2-17.svg",
+        alt: "Vector illustration of report analysis"
+    },
+    "rocket-launch": {
+        src: "assets/img/crud-placeholder-imgs/rocket-launch-61.svg",
+        alt: "Vector illustration of a rocket launch"
+    },
+    seo: {
+        src: "assets/img/crud-placeholder-imgs/seo-1-13.svg",
+        alt: "Vector illustration representing SEO"
+    },
+    settings: {
+        src: "assets/img/crud-placeholder-imgs/settings-64.svg",
+        alt: "Vector illustration of settings and gears"
+    },
+    "team-presentation": {
+        src: "assets/img/crud-placeholder-imgs/team-presentation-7-18.svg",
+        alt: "Vector illustration of a team giving a presentation"
+    },
+    "video-call": {
+        src: "assets/img/crud-placeholder-imgs/video-call-2-87.svg",
+        alt: "Vector illustration of a video call"
+    }
+};
 
 function init() {
     // add local data into localStorage if no data exists

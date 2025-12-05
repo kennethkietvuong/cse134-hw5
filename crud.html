@@ -58,26 +58,42 @@
                     <textarea id="description" name="description" rows=4 required></textarea>
 
                     <label for="link">Link (URL)</label>
-                    <input id="link" name="link" type="url" placeholder="#">
+                    <input id="link" name="link" type="url" placeholder="https://example.com" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Image Settings</legend>
+                    
+                    <label for="imageId">Thumbnail Image</label>
 
-                    <label for="imageWebp">WebP Image URL</label>
-                    <input id="imageWebp" name="imageWebp" type="url" placeholder="assets/img/example.webp">
+                    <select id="imageId" name="imageId">
+                        <option value="" id="imageId-default-option">Select an image...</option>   
 
-                    <label for="imageWebpType">WebP MIME Type</label>
-                    <input id="imageWebpType" name="imageWebpType" type="text" value="image/webp">
+                        <optgroup label="Stock Vector Illustrations">
+                            <option value="brainstorming">Brainstorming</option>
+                            <option value="camera">Camera</option>
+                            <option value="chart">Chart</option>
+                            <option value="creative-gear">Creative Gear Thinking</option>
+                            <option value="cybersecurity">Cybersecurity</option>
+                            <option value="data-settings">Data Settings</option>
+                            <option value="family">Family</option>
+                            <option value="money">Money</option>
+                            <option value="moving-forward">Moving Forward</option>
+                            <option value="report-analysis">Report Analysis</option>
+                            <option value="rocket-launch">Rocket Launch</option>
+                            <option value="seo">SEO</option>
+                            <option value="settings">Settings</option>
+                            <option value="team-presentation">Team Presentation</option>
+                            <option value="video-call">Video Call</option>
+                        </optgroup>
+                    </select>
 
-                    <label for="imageFallback">Fallback Image URL</label>
-                    <input id="imageFallback" name="imageFallback" type="url" placeholder="assets/img/example.jpg">
+                    <p id="image-text-help"> 
+                        For existing projects, leaving the selection as <q>Keep existing thumbnail</q>
+                        will preserve the current image (including default thumbnails).
+                        Choose a stock vector only if you want to replace it.
+                    </p>
 
-                    <label for="imageFallbackType">Fallback MIME Type</label>
-                    <input id="imageFallbackType" name="imageFallbackType" type="text" value="image/jpg">
-
-                    <label for="alt">Alt Text</label>
-                    <input id="alt" name="alt" type="text" placeholder="Short description of the image">
                 </fieldset>
 
                 <fieldset>

@@ -7,9 +7,19 @@ function init () {
     let form = document.getElementById('project-form');
     let statusElement = document.getElementById('crud-status');
     let deleteButton = document.getElementById('delete-btn');
+    let imageSelect = document.getElementById('imageId');
+    let imageDefaultOption = document.getElementById('imageId-default-option');
 
     // track which project index currently being edited (null = new project)
     let currentIndex = null;
+
+    function setImageDefaultLabel(toExistingProject) {
+        if (!imageDefaultOption) {
+            return;
+        }
+
+        imageDefaultOption.textContent = toExistingProject ? 'Keep existing thumbnail' : 'Select an image...';
+    }
 
     function fetchProjects() {
         let raw = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -56,23 +66,32 @@ function init () {
         });
     }
 
-    function projectForm() {
+    function projectForm(existingProject) {
         let formData = new FormData(form);
 
         let tagsRaw = (formData.get('tags') || '').toString().trim();
         let tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(t => t.length > 0) : [];
 
-        return {
-            title: formData.get('title') || '',
-            description: formData.get('description') || '',
-            link: formData.get('link') || '#',
-            imageWebp: formData.get('imageWebp') || '',
-            imageWebpType: formData.get('imageWebpType') || 'image/webp',
-            imageFallback: formData.get('imageFallback') || '',
-            imageFallbackType: formData.get('imageFallbackType') || 'image/jpg',
-            alt: formData.get('alt') || '',
-            tags: tags
-        };
+        let updated = existingProject ? {...existingProject} : {};
+        updated.title = formData.get('title') || '';
+        updated.description = formData.get('description') || '';
+        updated.link = formData.get('link') || '#';
+        updated.tags = tags;
+
+        let imageId = formData.get('imageId') || '';
+
+        if (imageId) {
+            // user chose a stock vector image
+            updated.imageId = imageId;
+        }
+
+        else {
+            if (!updated.imageId) {
+                delete updated.imageId;
+            }
+        }
+
+        return updated;
     }
 
     function fillForm(project) {
@@ -80,11 +99,7 @@ function init () {
         form.description.value = project.description || '';
         form.link.value = project.link || '';
 
-        form.imageWebp.value = project.imageWebp || '';
-        form.imageWebpType.value = project.imageWebpType || 'image/webp';
-        form.imageFallback.value = project.imageFallback || '';
-        form.imageFallbackType.value = project.imageFallbackType || 'image/jpg';
-        form.alt.value = project.alt || '';
+        form.imageId.value = project.imageId || '';
 
         form.tags.value = (project.tags || []).join(', ');
     }
@@ -103,6 +118,7 @@ function init () {
             // new project
             currentIndex = null;
             form.reset();
+            setImageDefaultLabel(false);
             statusElement.textContent = 'Creating a new project entry...';
             return
         }
@@ -118,6 +134,7 @@ function init () {
 
         currentIndex = idx;
         fillForm(project);
+        setImageDefaultLabel(true);
         statusElement.textContent = `Loaded project #${idx + 1} for editing.`;
     });
 
@@ -126,15 +143,25 @@ function init () {
         event.preventDefault();
 
         let projects = fetchProjects();
-        let project = projectForm();
+        let existing = currentIndex !== null && currentIndex >= 0 && currentIndex < projects.length ? projects[currentIndex] : null;
+        let project = projectForm(existing);
 
-        if (currentIndex === null || currentIndex < 0 || currentIndex >= projects.length) {
+        let imageId = form.imageId.value;
+
+        if (!existing && !imageId) {
+            statusElement.textContent = 'Please select a thumbnail image for a new project.';
+            form.imageId.focus();
+            return
+        } 
+
+        if (!existing) {
             // create
             projects.push(project);
             saveProjects(projects);
             currentIndex = projects.length - 1;
             refreshSelect(currentIndex);
             statusElement.textContent = `New project created (index ${currentIndex + 1}).`;
+            
         }
 
         else {
@@ -175,5 +202,6 @@ function init () {
 
     // initial load of options
     refreshSelect(null);
+    setImageDefaultLabel(false);
     statusElement.textContent = 'Select a project to edit or start a new one.';
 }
