@@ -7,7 +7,7 @@ function init () {
     let form = document.getElementById('project-form');
     let statusElement = document.getElementById('crud-status');
     let deleteButton = document.getElementById('delete-btn');
-    let imageSelect = document.getElementById('imageId');
+    let clearButton = document.getElementById('clear-btn');
     let imageDefaultOption = document.getElementById('imageId-default-option');
 
     // track which project index currently being edited (null = new project)
@@ -198,6 +198,14 @@ function init () {
         currentIndex = null;
         refreshSelect(null);
         form.reset();
+    });
+
+    clearButton.addEventListener('click', () => {
+        form.reset();
+        currentIndex = null;
+        selectElement.value = '';
+        setImageDefaultLabel(false);
+        statusElement.textContent = 'Creating a new project entry...';
     });
 
     // initial load of options
