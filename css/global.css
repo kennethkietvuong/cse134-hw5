@@ -98,7 +98,6 @@ header {
     }
 }
 
-
 footer {
     border-top: 2px solid gray;
     display: flex;
@@ -243,12 +242,37 @@ header { view-transition-name: header; }
 footer { view-transition-name: footer; }
 theme-widget { view-transition-name: theme-widget; }
 
+/* Tablets/Laptops */
+@media (min-width: 601px) and (max-width: 1024px) {
+    header {
+        padding: 1rem 1.25rem;
+
+        nav ul {
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            justify-content: flex-end;
+            max-width: 70vw;
+
+            a {
+                font-size: 0.95rem;
+            }
+        }
+
+        & > span {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.8rem;
-        
+        padding: 0.75rem 1.25rem;
+        position: static;
+        top: auto;
         
         nav ul {
             flex-direction: column;
@@ -257,7 +281,7 @@ theme-widget { view-transition-name: theme-widget; }
             
             a {
                 font-size: 1.05rem;
-                display: block;
+                display: inline-block;
                 
                 &.active::after {
                     width: 100%;
